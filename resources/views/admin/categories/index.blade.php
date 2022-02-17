@@ -20,7 +20,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Slug</th>
-                                {{-- <th scope="col">Handle</th> --}}
+                                <th scope="col"></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -29,6 +29,11 @@
                                         <th>{{$category->id}}</th>
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
+                                        <td>
+                                            <a href="{{route('categories.edit', $category->id)}}">
+                                                <button type="button" class="btn btn-warning">Modifica</button>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

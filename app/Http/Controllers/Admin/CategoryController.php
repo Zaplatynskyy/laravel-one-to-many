@@ -60,10 +60,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+        
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,9 +71,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -83,9 +83,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories|max:50'
+        ]);
+
+        $data = $request->all();
+
+        $category->name = $data['name'];
+        $category->slug = Str::of($data['name'])->slug('-');
+
+        $category->save();
+
+        return redirect()->route('categories.index');
+
     }
 
     /**
