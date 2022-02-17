@@ -29,10 +29,16 @@
                                         <th>{{$category->id}}</th>
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
-                                        <td>
-                                            <a href="{{route('categories.edit', $category->id)}}">
+                                        <td class="d-flex">
+                                            <a href="{{route('categories.edit', $category->id)}}" class="mr-2">
                                                 <button type="button" class="btn btn-warning">Modifica</button>
                                             </a>
+                                            <form action="{{route('categories.destroy', $category->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
