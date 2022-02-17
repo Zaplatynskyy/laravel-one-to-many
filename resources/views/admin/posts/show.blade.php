@@ -22,7 +22,13 @@
         <div class="updated"><strong>Ultima modifica :</strong> <span>{{$post->updated_at}}</span></div>
     </div>
 
-    <div class="published">
+    <div class="categories_published">
+        @if ($post->category)
+            <span class="badge badge-primary">{{$post->category->name}}</span>
+        @else
+            <span class="badge badge-primary">Nessuna Categoria</span>
+        @endif
+
         @if ($post->published)
              <span class="badge badge-success">Publicato</span>
         @else

@@ -21,6 +21,28 @@
             @enderror
         </div>
 
+        <div class="form-group">
+            <label for="category">Categoria</label>
+            <select class="form-control @error('category_id') is-invalid @enderror" id="category" name="category_id">
+              <option value="">Scegli una Categoria</option>
+              
+              @foreach ($categories as $category)
+                @php
+                    $variable = $post->category_id;
+
+                    if (old('category_id')) {
+                        $variable = old('category_id');
+                    }
+                @endphp
+
+                <option value="{{$category->id}}" {{$variable == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+              @endforeach
+            </select>
+            @error('category_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
         <div class="form-group form-check">
             @php
                 $variable = old('published') ? old('published') : $post->published;
