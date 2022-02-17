@@ -20,6 +20,20 @@
             @enderror
         </div>
 
+        <div class="form-group">
+            <label for="category">Categoria</label>
+            <select class="form-control @error('category_id') is-invalid @enderror" id="category" name="category_id">
+              <option value="">Scegli una Categoria</option>
+              
+              @foreach ($categories as $category)
+                <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+              @endforeach
+            </select>
+            @error('category_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="published" name="published" {{old('published') ? 'checked' : ''}}>
           <label class="form-check-label" for="published">Pubblica</label>
