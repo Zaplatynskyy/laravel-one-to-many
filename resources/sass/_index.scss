@@ -1,0 +1,11 @@
+.posts_list {
+    list-style: none;
+
+    li {
+        padding: 20px 0;
+    }
+
+    li:not(:last-child) {
+        border-bottom: 1px solid lightgrey;
+    }
+}
