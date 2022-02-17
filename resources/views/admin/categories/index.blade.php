@@ -7,17 +7,10 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h3>Categories List</h3>
-                        <form action="{{route('categories.store')}}" method="POST" class="d-flex align-items-center">
-                            @csrf
-                            
-                            @error('name')
-                                <div class="alert alert-danger my_alert">{{ $message }}</div>
-                            @enderror
-                            <input type="text" class="form-control my_input @error('name') is-invalid @enderror" id="name" name="name">
-                            
-                            
-                            <button type="submit" class="btn btn-primary ml-2">Nuovo</button>
-                        </form>
+                        
+                        <a href="{{route('categories.create')}}">
+                            <button type="button" class="btn btn-primary">Nuovo</button>
+                        </a>
                     </div>
     
                     <div class="card-body">
