@@ -40,16 +40,26 @@
                                
                                <p class="my-3">{{$post->content}}</p>
 
-                               <div class="info_post d-flex justify-content-between">
-                                   <div class="date">{{$post->updated_at}}</div>
+                               <div class="info_post d-flex justify-content-between align-items-center">
+                                    <div class="date">{{$post->updated_at}}</div>
 
-                                   <div class="published">
-                                       @if ($post->published)
-                                            <span class="badge badge-success">Publicato</span>
-                                       @else
-                                            <span class="badge badge-secondary">Non Publicato</span>
-                                       @endif
-                                   </div>
+                                    {{-- @dd($categories) --}}
+                                    {{-- @dd($post->category) --}}
+
+                                    @if ($post->category)
+                                        <span class="badge badge-primary">{{$post->category->name}}</span>
+                                    @else
+                                        <span class="badge badge-primary">Nessuna Categoria</span>
+                                    @endif
+
+                                    <div class="published">
+
+                                        @if ($post->published)
+                                                <span class="badge badge-success">Publicato</span>
+                                        @else
+                                                <span class="badge badge-secondary">Non Publicato</span>
+                                        @endif
+                                    </div>
                                </div>
                            </li>
                        @endforeach
