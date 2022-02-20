@@ -30,7 +30,11 @@
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
                                         <td class="d-flex">
-                                            <a href="{{route('categories.edit', $category->id)}}" class="mr-2">
+                                            <a href="{{route('categories.show', $category->id)}}">
+                                                <button type="button" class="btn btn-success">Visualizza</button>
+                                            </a>
+
+                                            <a href="{{route('categories.edit', $category->id)}}" class="mx-2">
                                                 <button type="button" class="btn btn-warning">Modifica</button>
                                             </a>
                                             <form action="{{route('categories.destroy', $category->id)}}" method="POST">
