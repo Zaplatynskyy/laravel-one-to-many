@@ -37,6 +37,12 @@
                                         </form>
                                     </div>
                                </div>
+
+                               @if ($post->image)
+                                    <div class="image w-100">
+                                        <img class="w-100" src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}">
+                                    </div>  
+                               @endif
                                
                                <p class="my-3">{{$post->content}}</p>
 

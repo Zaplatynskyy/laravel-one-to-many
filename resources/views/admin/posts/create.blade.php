@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{route('posts.store')}}" method="POST">
+    <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="title">Titolo</label>
@@ -34,10 +34,19 @@
             @enderror
         </div>
 
+        <div class="form-group">
+          <label for="image">Immagine</label>
+          <input type="file" class="form-control-file @error('category_id') is-invalid @enderror" id="image" name="image">
+          @error('image')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
+        </div>
+
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="published" name="published" {{old('published') ? 'checked' : ''}}>
           <label class="form-check-label" for="published">Pubblica</label>
         </div>
+
         <button type="submit" class="btn btn-primary">Crea</button>
       </form>
 </div>

@@ -11,6 +11,12 @@
         <strong>Slug :</strong>
         <h5 class="d-inline-block">{{$post->slug}}</h5>
     </div>
+    
+    @if ($post->image)
+        <div class="image w-50 my-2">
+            <img class="w-100" src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}">
+        </div>  
+    @endif
 
     <div class="content my-2">
         <strong>Contenuto :</strong>
